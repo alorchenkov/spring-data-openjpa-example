@@ -1,0 +1,24 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="WsSimulator"
+                      transaction-type="JTA">
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <jta-data-source>jdbc/simulator-ds</jta-data-source>
+        <class>com.cpwr.gdo.simulator.model.AbstractEntity</class>
+        <class>com.cpwr.gdo.simulator.model.Service</class>
+        <class>com.cpwr.gdo.simulator.model.FailedRequest</class>
+        <class>com.cpwr.gdo.simulator.model.Rule</class>
+        <class>com.cpwr.gdo.simulator.model.XpathRuleData</class>
+        <class>com.cpwr.gdo.simulator.model.security.Authority</class>
+        <class>com.cpwr.gdo.simulator.model.security.User</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="openjpa.DynamicEnhancementAgent" value="false"/>
+            <property name="openjpa.RuntimeUnenhancedClasses" value="unsupported"/>
+            <property name="openjpa.Log" value="DefaultLevel=TRACE"/>
+            <property name="openjpa.jdbc.DBDictionary" value="db2(supportsMultipleNontransactionalResultSets=false)"/>
+            <property name="openjpa.ConnectionFactoryProperties" value="autocommit=false"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

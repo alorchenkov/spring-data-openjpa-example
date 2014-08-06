@@ -1,0 +1,67 @@
+<p>
+    $control-form
+</p>
+$table
+<p>
+</p>
+$form.startTag()
+<!-- Show validation errors -->
+#if (!$form.fields.response.valid)
+<div style="color: red;margin-bottom: 1em"> $form.fields.response.error</div>
+#end
+<b>Rule Details</b>
+<div class="divTable">
+    <div class="divTableRow">
+        <div class="divTableCell">$form.getField("service.requestType").getLabel():</div>
+        <div class="divTableCell">$form.getField("service.requestType")</div>
+    </div>
+
+    <div class="divTableRow">
+        <div class="divTableCell">Name:</div>
+        <div class="divTableCell">${form.fields.name}</div>
+    </div>
+
+    <div class="divTableRow">
+        <div class="divTableCell">Description:</div>
+        <div class="divTableCell">${form.fields.description}</div>
+    </div>
+
+    <div class="divTableRow">
+        <div class="divTableCell">XPath Expression:</div>
+        <div class="divTableCell">$form.getField("xpathRuleData.xpathExpression")</div>
+    </div>
+
+    <div class="divTableRow">
+        <div class="divTableCell">XPath Value:</div>
+        <div class="divTableCell">$form.getField("xpathRuleData.xpathValue")</div>
+    </div>
+
+    <div class="divTableRow">
+        <div class="divTableCell">Response:</div>
+        <div class="divTableCellLeft">
+            <div class="requestEditor" id="responseEditor">${form.fields.formattedResponse.value}</div>
+            ${form.fields.response}
+        </div>
+    </div>
+
+    <div class="divTableRow">
+        <div class="divTableCell"><!-- --></div>
+        <div class="divTableCell">$form.getField("ok")$form.getField("cancel")</div>
+    </div>
+</div>
+$form.endTag()
+
+<script src="${context}/assets/js/ace/src-noconflict/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+<script type="text/javascript">
+    /* The standard ace editor in xml mode.*/
+    var responseEditor = ace.edit("responseEditor");
+    responseEditor.setTheme("ace/theme/chrome");
+    responseEditor.getSession().setMode("ace/mode/xml");
+
+    /* The script changes the hidden textarea with values from the ace editor element.*/
+    var textarea = $('textarea[name="response"]');
+    responseEditor.getSession().on("change", function () {
+    textarea.val(responseEditor.getSession().getValue());
+    });
+</script>

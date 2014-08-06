@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:global-method-security secured-annotations="enabled"/>
+
+    <security:http auto-config="true" use-expressions="true">
+        <!-- Restrict URLs based on role -->
+        <security:intercept-url pattern="/secure/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+
+        <!-- Access to pages under the /security/secure folder requires to be authenticated -->
+        <security:intercept-url pattern='/security/secure/**' access='IS_AUTHENTICATED_REMEMBERED'/>
+        <security:intercept-url pattern="/services.htm" access="hasRole('WS_USER')"/>
+        <security:intercept-url pattern="/services/**" access="hasRole('WS_USER')"/>
+        <security:intercept-url pattern="/rules.htm" access="hasRole('WS_USER')"/>
+        <security:intercept-url pattern="/rules/**" access="hasRole('WS_USER')"/>
+
+        <!-- Specify the login page url, failure url and default landing page url. -->
+        <security:form-login login-page='/security/login.htm'
+                             authentication-failure-url="/security/login.htm?auth-error=1" default-target-url="/"/>
+
+        <!-- Specify a virtual "logout" url which forwards to the logout.htm page. -->
+        <security:logout logout-url="/security/logout" logout-success-url="/security/logout.htm"/>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref='authService'>
+            <security:password-encoder ref="encoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
+
+</beans>

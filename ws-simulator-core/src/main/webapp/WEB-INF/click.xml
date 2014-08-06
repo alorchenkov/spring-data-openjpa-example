@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<click-app>
+    <mode value="trace"/>
+    <pages package="com.cpwr.gdo.simulator.web.service"/>
+    <pages package="com.cpwr.gdo.simulator.web.rule"/>
+    <pages package="com.cpwr.gdo.simulator.web.test"/>
+    <pages automapping="false">
+        <page path="security/login.htm" classname="com.cpwr.gdo.simulator.web.security.Login"/>
+        <page path="security/logout.htm" classname="com.cpwr.gdo.simulator.web.security.Logout"/>
+        <page path="security/create-account.htm" classname="com.cpwr.gdo.simulator.web.security.CreateAccount"/>
+    </pages>
+</click-app>

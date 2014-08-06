@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+
+    <!-- Directory to scan for repository classes -->
+    <jpa:repositories base-package="com.cpwr.gdo.simulator.dao.repository"/>
+
+    <!-- -->
+    <!--bean class="org.springframework.orm.jpa.JpaTransactionManager"
+          id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.OpenJpaDialect"/>
+        </property>
+    </bean-->
+
+    <bean class="org.springframework.transaction.jta.JtaTransactionManager"
+          id="transactionManager">
+    </bean>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <!-- -->
+        <!--property name="dataSource" ref="wsDataSource"/-->
+        <property name="jtaDataSource" ref="wsDataSource"/>
+        <property name="persistenceUnitName" value="WsSimulator"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="generateDdl" value="true"/>
+                <property name="database" value="DB2"/>
+            </bean>
+        </property>
+    </bean>
+
+    <jee:jndi-lookup id="wsDataSource"
+                     jndi-name="java:comp/env/jdbc/simulator-ds"
+                     expected-type="javax.sql.DataSource"/>
+
+    <jpa:auditing auditor-aware-ref="auditorStringAware" set-dates="true"/>
+    <bean id="auditorStringAware"
+          class="com.cpwr.gdo.simulator.service.auditing.AuditorStringAware"></bean>
+
+</beans>

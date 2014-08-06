@@ -1,0 +1,178 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cpwr.gdo.simulator</groupId>
+        <artifactId>ws-simulator</artifactId>
+        <version>0.2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.cpwr.gdo.simulator.core</groupId>
+    <artifactId>ws-simulator-core</artifactId>
+    <packaging>war</packaging>
+
+    <properties>
+        <apache.click.version>2.3.0</apache.click.version>
+
+        <urlrewritefilter.version>4.0.3</urlrewritefilter.version>
+        <servlet.version>2.5</servlet.version>
+
+        <covisint.cca.ws.client.version>1.0-SNAPSHOT</covisint.cca.ws.client.version>
+        <covisint.docdeliveryclient.version>2.10-FINAL</covisint.docdeliveryclient.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <parent.basedir>${basedir}/..</parent.basedir>
+        <hsqldb.version>2.2.9</hsqldb.version>
+        <xstream.version>1.4.5</xstream.version>
+        <cca-ws-client-gmowner.version>12.8.2</cca-ws-client-gmowner.version>
+
+        <jetty.maven.plugin.version>8.1.13.v20130916</jetty.maven.plugin.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.covisint.css.onstarx</groupId>
+            <artifactId>cca-ws-client</artifactId>
+            <version>${covisint.cca.ws.client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.covisint.messaging.onstar</groupId>
+            <artifactId>covisint-docdelivery-client</artifactId>
+            <version>${covisint.docdeliveryclient.version}</version>
+            <!-- exclusions> <exclusion> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId>
+                   </exclusion> </exclusions -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.covisint.css.custom.gmowner</groupId>
+            <artifactId>cca-ws-client-gmowner</artifactId>
+            <version>${cca-ws-client-gmowner.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.cpwr.gdo.simulator.service</groupId>
+            <artifactId>ws-simulator-service</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.click</groupId>
+            <artifactId>click-nodeps</artifactId>
+            <version>${apache.click.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Specifying the artifactId click-extras will include Click Extras in
+            your project -->
+        <dependency>
+            <groupId>org.apache.click</groupId>
+            <artifactId>click-extras</artifactId>
+            <version>${apache.click.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewritefilter</artifactId>
+            <version>${urlrewritefilter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.33.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>7.0.26</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.maven.plugin.version}</version>
+                <configuration>
+                    <webAppConfig>
+                        <contextPath>/ws-simulator</contextPath>
+                    </webAppConfig>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

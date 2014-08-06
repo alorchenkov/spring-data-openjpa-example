@@ -1,0 +1,59 @@
+<div class="dialogForm" style="width:315px;">
+
+<form method="post" action="$context/j_spring_security_check" name="form">
+<table class="login" border="0" width="100%">
+ <tr>
+#if ($request.getParameter("auth-error"))
+   <td colspan="2" style="color:red">
+	Invalid Username or Password, please try again.<br/>Please ensure Caps Lock is off.
+   </td>
+#else
+   <td colspan="2" style="font-weight:bold;font-size:10pt;">Please login</td>
+#end
+ </tr>
+ <tr>
+   <td colspan="2">&nbsp;</td>
+ </tr>
+ <tr>
+   <td><label>Username</label></td>
+   <td><input type="text" name="j_username" style="width:200px;"/></td>
+ </tr>
+ <tr>
+   <td style="vertical-align:middle;"><label>Password</label></td>
+   <td style="vertical-align:middle;"><input type="password" name="j_password" style="width:200px;"/></td>
+ </tr>
+ <tr>
+   <td width="100"><label>Remember Me?</label></td>
+   <td><input type="checkbox" name="_spring_security_remember_me"/></td>
+   
+ </tr>
+ <tr>
+     <td width="100">&nbsp;</td>
+     <td style="vertical-align:middle;"><input type="image" src="$context/assets/images/intro.png" title="Click to Login"/></td>
+ </tr>
+</table>
+</form>
+
+<script type="text/javascript">
+  document.form.j_username.focus(); 
+</script>
+
+</div>
+
+
+<div class="dialogForm" style="width:315px;margin-top:40px;">
+
+<table class="login" border="0" width="100%">
+ <tr>
+   <td colspan="4" style="white-space:nowrap;color:#404040;">
+    New to GDO Webservices Simulator?
+   </td>
+ </tr>
+ <tr>
+   <td colspan="4" style="padding-top:15px;">
+   	<input type="button" style="font-weight:bold;" value="Create an account &#187;" onclick="javascript:document.location.href='${context}/security/create-account.htm?redirect=/services';"/>
+   </td>
+  </tr>
+</table>
+
+</div>

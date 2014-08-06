@@ -1,0 +1,98 @@
+<!-- Test request payload form -->
+
+<p>
+    $xpath-form.startTag()
+    <!-- Show validation errors -->
+    #if (!$xpath-form.fields.xpathExpression.valid)
+<div style="color: red;margin-bottom: 1em"> $xpath-form.fields.xpathExpression.error</div>
+#end
+
+<div class="divTable">
+    <div class="divTableRow">
+        <div class="divTableCell">
+            XPath expression:
+        </div>
+        <div class="divTableCell">
+            ${xpath-form.fields.xpathExpression}
+        </div>
+    </div>
+    <div class="divTableRow">
+        <div class="divTableCell">
+            XPath value:
+        </div>
+        <div class="divTableCell">
+            ${xpath-form.fields.xpathValue}
+        </div>
+    </div>
+    <div class="divTableRow">
+        <div class="divTableCell">
+            Request:
+        </div>
+        <div class="divTableCellLeft">
+            <div class="testRequestEditor" id="requestEditor"></div>
+        </div>
+    </div>
+    <div class="divTableRow">
+        <div class="divTableCell">
+            <!-- -->
+        </div>
+        <div class="divTableCell">
+            ${xpath-form.fields.check}${xpath-form.fields.clear}
+        </div>
+    </div>
+</div>
+
+<!--div style="position:relative;top: 30px;float:left;height: 300px; text-align: center;display: table-cell;vertical-align: middle;">Request:</div>
+<div class="testRequestEditor" id="requestEditor"></div-->
+
+${xpath-form.fields.request}</br>
+
+$xpath-form.endTag()
+<p>&nbsp;</p>
+
+<!-- Result rule and xml response -->
+
+<script src="${context}/assets/js/ace/src-noconflict/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+<script type="text/javascript">
+    /* The standard ace editor in xml mode.*/
+    var requestEditor = ace.edit("requestEditor");
+    requestEditor.setTheme("ace/theme/chrome");
+    requestEditor.getSession().setMode("ace/mode/xml");
+
+    /* The script changes the hidden textarea with values from the ace editor element.*/
+    var textarea = $('textarea[name="request"]');
+    requestEditor.getSession().on("change", function () {
+    textarea.val(requestEditor.getSession().getValue());
+    });
+</script>
+
+#if($isXpathChecked)
+<div class="divTable">
+    <div class="divTableRow">
+        <div class="divTableCell">
+            <b>XPath Query Details</b>
+        </div>
+        <div class="divTableCellLeft">
+        </div>
+    </div>
+    <div class="divTableRow">
+        <div class="divTableCell">
+            <b>Result:</b>
+        </div>
+        <div class="divTableCellLeft">
+            $xpathQueryResult
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /* The script */
+    var requestEditor = ace.edit("requestEditor");
+    requestEditor.setTheme("ace/theme/chrome");
+    requestEditor.getSession().setMode("ace/mode/xml");
+
+    var text = $("#xpath-form_request").val();
+    requestEditor.getSession().setValue(text);
+</script>
+#end

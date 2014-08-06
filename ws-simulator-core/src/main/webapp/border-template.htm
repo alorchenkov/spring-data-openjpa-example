@@ -1,0 +1,95 @@
+<!doctype html>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<script language="JavaScript" type="text/javascript" src="${context}/assets/js/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    /*Links that has the "#hlep-link" id will call this script.*/
+    $('#help-link').click(function (event){
+
+    /* Gets the URL from the clicked link.*/
+    var url = $(this).attr("href");
+
+    /*Gets the name from the clicked link.*/
+    var windowName = "popUp";
+
+    var windowSize =
+    "width=650,height=800,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,modal=yes";
+
+    /*This method opens a new browser window.*/
+    window.open('$helpPage', windowName, windowSize);
+
+    /*Prevents the browser from executing the default action and
+    allows us to use the "window.open" within our script.*/
+    event.preventDefault();
+    });
+    });
+</script>
+
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <title>Webservices Simulator: $title</title>
+    <link type="text/css" rel="stylesheet" href="${context}/assets/css/style.css" title="Style"/>
+
+    ${headElements}
+
+    <link rel="shortcut icon" href="$context/assets/images/favicon.ico" type="image/ico"/>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        ## Title Header
+
+        <div class="title-icon">
+            <a target="blank" href="http://www.oracle.com/"><img src="${context}/assets/images/gdo.png"
+                                                                    border="0" alt="Click"/></a>
+        </div>
+        <div class="title-left">
+            Webservices Simulator: $title
+        </div>
+        <div class="title-hosted">
+            <a href="#" id="help-link"><img
+                    src="${context}/assets/images/help_icon.jpg" border="0" alt="Click"/>Help</a>
+
+            <p>v0.3, June 2013</p>
+        </div>
+        <div class="header-color">
+        </div>
+        ${rootMenu}
+    </div>
+
+    <div class="content">
+        ## Page Content
+        <!--div id="page_title" class="help-left"><h3>$title</h3>
+		</div-->
+
+        #parse(${path})
+
+    </div>
+</div>
+
+${jsElements}
+
+</body>
+</html>

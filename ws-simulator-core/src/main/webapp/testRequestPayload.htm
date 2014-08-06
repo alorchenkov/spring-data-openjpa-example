@@ -1,0 +1,102 @@
+<!-- Test request payload form -->
+<p>
+    $request-form.startTag()
+    <!-- Show validation errors -->
+    #if (!$request-form.fields.requestType.valid)
+<div style="color: red;margin-bottom: 1em"> $request-form.fields.requestType.error</div>
+#end
+
+<div class="div-1">
+    <div class="autocomplete" id="requestType">
+        <label>Service: </label>${request-form.fields.requestType}</br>
+    </div>
+    <p></p>
+
+    <div style="position:relative;top: 30px;float:left;height: 300px; text-align: center;display: table-cell;vertical-align: middle;">Request:</div>
+    <div class="testRequestEditor" id="requestEditor"></div>
+    ${request-form.fields.request}</br>
+</div>
+${request-form.fields.find}${request-form.fields.clear}
+$request-form.endTag()
+<p>&nbsp;</p>
+
+<!-- Result rule and xml response -->
+
+<script src="${context}/assets/js/ace/src-noconflict/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+<script type="text/javascript">
+    /* The standard ace editor in xml mode.*/
+    var requestEditor = ace.edit("requestEditor");
+    requestEditor.setTheme("ace/theme/chrome");
+    requestEditor.getSession().setMode("ace/mode/xml");
+
+    /* The script changes the hidden textarea with values from the ace editor element.*/
+    var textarea = $('textarea[name="request"]');
+    requestEditor.getSession().on("change", function () {
+    textarea.val(requestEditor.getSession().getValue());
+    });
+</script>
+
+#if ($applicableRule)
+<b>Rule Details</b>
+<table border="0" cellspacing="2" cellpadding="2">
+    <tr>
+        <td><b>Request Type</b></td>
+        <td>&nbsp;</td>
+        <td>$applicableRule.service.requestType</td>
+    </tr>
+    <tr>
+        <td><b>Name</b></td>
+        <td>&nbsp;</td>
+        <td>$applicableRule.name</td>
+    </tr>
+    <tr>
+        <td><b>Description</b></td>
+        <td>&nbsp;</td>
+        <td>$applicableRule.description</a></td>
+    </tr>
+    <tr>
+        <td><b>XPath expression</b></td>
+        <td>&nbsp;</td>
+        <td>$applicableRule.xpathRuleData.xpathExpression</td>
+    </tr>
+    <tr>
+        <td><b>XPath value</b></td>
+        <td>&nbsp;</td>
+        <td>$applicableRule.xpathRuleData.xpathValue</td>
+    </tr>
+    <tr>
+        <td><b>Response ACE</b></td>
+        <td>&nbsp;</td>
+        <td>
+            <div style="border:1px solid #ccc; width:700px">
+                <div class="responseViewer" id="responseViewer">$applicableRule.formattedResponse</div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Date Created</b></td>
+        <td>&nbsp;</td>
+        <td>$applicableRule.createdDate</td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    /* The method sets up the ace editor in read only mode.*/
+    var responseViewer = ace.edit("responseViewer");
+    responseViewer.setTheme("ace/theme/chrome");
+    responseViewer.getSession().setMode("ace/mode/xml");
+    responseViewer.setReadOnly(true);
+</script>
+#end
+
+<script type="text/javascript">
+    /* The script */
+    var requestEditor = ace.edit("requestEditor");
+    requestEditor.setTheme("ace/theme/chrome");
+    requestEditor.getSession().setMode("ace/mode/xml");
+
+    var text = $("#request-form_request").val();
+    requestEditor.getSession().setValue(text);
+</script>
+#if( $message ) <i> $message </i> #end
