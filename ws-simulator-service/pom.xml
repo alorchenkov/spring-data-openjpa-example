@@ -217,9 +217,13 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <!-- forkMode>never</forkMode -->
-                    <argLine>
+                    <!-- argLine>
                         -javaagent:"${user.home}/.m2/repository/org/apache/openjpa/openjpa/${openjpa.version}/openjpa-${openjpa.version}.jar"
                         -Xms512m -Xmx1024m -XX:MaxPermSize=512m
+                    </argLine-->
+                    <argLine>
+                         -javaagent:"${user.home}/src/github.com/alorchenkov/spring-data-openjpa-example/ws-simulator-service/lib/openjpa-${openjpa.version}.jar"
+                         -Xms512m -Xmx1024m -XX:MaxPermSize=512m
                     </argLine>
                     <includes>
                         <include>**/AllUnitTestSuite.java</include>
