@@ -218,7 +218,7 @@
                 <configuration>
                     <!-- forkMode>never</forkMode -->
                     <argLine>
-                        -javaagent:"~/.m2/repository/org/apache/openjpa/openjpa/${openjpa.version}/openjpa-${openjpa.version}.jar"
+                        -javaagent:"~/.m2/repository/org/apache/openjpa/${openjpa.version}/openjpa-${openjpa.version}.jar"
                         -Xms512m -Xmx1024m -XX:MaxPermSize=512m
                     </argLine>
                     <includes>
