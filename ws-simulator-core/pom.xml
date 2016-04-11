@@ -32,26 +32,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.covisint.css.onstarx</groupId>
-            <artifactId>cca-ws-client</artifactId>
-            <version>${covisint.cca.ws.client.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.covisint.messaging.onstar</groupId>
-            <artifactId>covisint-docdelivery-client</artifactId>
-            <version>${covisint.docdeliveryclient.version}</version>
-            <!-- exclusions> <exclusion> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId>
-                   </exclusion> </exclusions -->
-        </dependency>
-
-        <dependency>
-            <groupId>com.covisint.css.custom.gmowner</groupId>
-            <artifactId>cca-ws-client-gmowner</artifactId>
-            <version>${cca-ws-client-gmowner.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
