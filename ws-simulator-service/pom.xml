@@ -217,8 +217,14 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <!-- forkMode>never</forkMode -->
-                    <argLine>
+                    <!-- Codeship -->
+                    <!--argLine>
                         -javaagent:"/home/rof/.m2/repository/org/apache/openjpa/openjpa-all/${openjpa.version}/openjpa-all-${openjpa.version}.jar"
+                        -Xms512m -Xmx1024m -XX:MaxPermSize=512m
+                    </argLine-->
+                    <!-- Shippable -->
+                    <argLine>
+                        -javaagent:"/root/.m2/repository/org/apache/openjpa/openjpa-all/${openjpa.version}/openjpa-all-${openjpa.version}.jar"
                         -Xms512m -Xmx1024m -XX:MaxPermSize=512m
                     </argLine>
                     <includes>
