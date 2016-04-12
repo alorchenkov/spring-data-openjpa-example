@@ -9,4 +9,4 @@ before_script:
 
 script:
   - mvn clean cobertura:cobertura -DoutputDirectory=shippable/codecoverage
-  - mvn test surefire-report:report -DoutputDirectory=shippable/testresults
+  - mvn test surefire-report:report -DoutputDirectory=../shippable/testresults
