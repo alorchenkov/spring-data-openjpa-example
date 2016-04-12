@@ -8,5 +8,5 @@ before_script:
   - mkdir -p shippable/codecoverage
 
 script:
-  - mvn clean cobertura:cobertura
-  - mvn test
+  - mvn clean cobertura:cobertura -DoutputDirectory=shippable/codecoverage
+  - mvn test surefire-report:report -DoutputDirectory=shippable/testresults
