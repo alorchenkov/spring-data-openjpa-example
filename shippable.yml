@@ -1,0 +1,12 @@
+language: java
+
+jdk:
+   - oraclejdk8
+
+before_script: 
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+
+script:
+  - mvn clean cobertura:cobertura
+  - mvn test
