@@ -12,5 +12,5 @@ script:
   - mvn test
   
 after_script:
-  - cp ws-simulator/service/target/site/cobertura/* shippable/codecoverage
-  - cp ws-simulator/service/target/surefire-reports/* shippable/testresults
+  - cp ws-simulator-service/target/site/cobertura/* shippable/codecoverage
+  - cp ws-simulator-service/target/surefire-reports/* shippable/testresults
