@@ -224,7 +224,7 @@
                     </argLine-->
                     <!-- Shippable -->
                     <argLine>
-                        -javaagent:"/root/.m2/repository/org/apache/openjpa/openjpa-all/${openjpa.version}/openjpa-all-${openjpa.version}.jar"
+                        -javaagent:"${env.HOME}/.m2/repository/org/apache/openjpa/openjpa-all/${openjpa.version}/openjpa-all-${openjpa.version}.jar"
                         -Xms512m -Xmx1024m -XX:MaxPermSize=512m
                     </argLine>
                     <includes>
