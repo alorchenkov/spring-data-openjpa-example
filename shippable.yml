@@ -8,8 +8,9 @@ before_script:
   - mkdir -p shippable/codecoverage
 
 script:
-  - mvn clean cobertura:cobertura -DoutputDirectory=shippable/codecoverage
-  - mvn test surefire-report:report -DredirectTestOutputToFile=true -DreportsDirectory=../shippable/testresults
+  - mvn clean cobertura:cobertura -Dcobertura.report.format=xml
+  - mvn test
   
 after_script:
-  - cp shippable/codecoverage/*/coverage.xml shippable/codecoverage
+  - cp ws-simulator/service/target/site/cobertura/* shippable/codecoverage
+  - cp ws-simulator/service/target/surefire-reports/* shippable/testresults
