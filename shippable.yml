@@ -11,5 +11,5 @@ script:
   - mvn clean cobertura:cobertura -DoutputDirectory=shippable/codecoverage
   - mvn test surefire-report:report -DredirectTestOutputToFile=true -DreportsDirectory=../shippable/testresults
   
-after_script
+after_script:
   - cp shippable/codecoverage/*/coverage.xml shippable/codecoverage
