@@ -11,3 +11,6 @@ before_script:
 
 script:
   - mvn clean cobertura:cobertura -Dcobertura.report.format=xml test
+
+after_script:
+  - cp -r ws-simulator-service/target/site/cobertura/* shippable/codecoverage/
