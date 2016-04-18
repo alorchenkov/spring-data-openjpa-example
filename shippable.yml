@@ -5,12 +5,9 @@ jdk:
 
 before_script: 
   - mkdir -p shippable/testresults
-  - ln -s ../target/surefire-reports shippable/testresults
+  - ln -s ws-simulator-service/target/surefire-reports shippable/testresults
   - mkdir -p shippable/codecoverage
-  - ln -s ../site/cobertura shippable/codecoverage
+  - ln -s ws-simulator-service/target/site/cobertura shippable/codecoverage
 
 script:
   - mvn clean cobertura:cobertura -Dcobertura.report.format=xml test
-
-after_script:
-  - cp -r ../site/cobertura/* shippable/codecoverage/
