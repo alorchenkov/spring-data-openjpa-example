@@ -11,3 +11,7 @@ before_script:
 
 script:
   - mvn clean cobertura:cobertura -Dcobertura.report.format=xml test
+  
+after_script:
+  - cp -r ../target/surefire-reports/* shippable/testresults/
+  - cp -r ../site/cobertura/* shippable/codecoverage/
