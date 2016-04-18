@@ -5,7 +5,7 @@ jdk:
 
 before_script: 
   - mkdir -p shippable/testresults
-  - ln -s ws-simulator-service/target/surefire-reports shippable/testresults
+  - ln -s ../target/surefire-reports shippable/testresults
   - mkdir -p shippable/codecoverage
   - ln -s ws-simulator-service/target/site/cobertura shippable/codecoverage
 
@@ -14,3 +14,5 @@ script:
 
 after_script:
   - cp -r ws-simulator-service/target/site/cobertura/* shippable/codecoverage/
+  - cp -r ws-simulator-service/target/surefire-reports/* shippable/testresults/
+  - cp -r ws-simulator-core/target/surefire-reports/* shippable/testresults/
