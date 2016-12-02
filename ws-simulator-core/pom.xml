@@ -16,16 +16,10 @@
 
         <urlrewritefilter.version>4.0.3</urlrewritefilter.version>
         <servlet.version>2.5</servlet.version>
-
-        <covisint.cca.ws.client.version>1.0-SNAPSHOT</covisint.cca.ws.client.version>
-        <covisint.docdeliveryclient.version>2.10-FINAL</covisint.docdeliveryclient.version>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <parent.basedir>${basedir}/..</parent.basedir>
         <hsqldb.version>2.2.9</hsqldb.version>
         <xstream.version>1.4.5</xstream.version>
-        <cca-ws-client-gmowner.version>12.8.2</cca-ws-client-gmowner.version>
-
         <jetty.maven.plugin.version>8.1.13.v20130916</jetty.maven.plugin.version>
     </properties>
 
