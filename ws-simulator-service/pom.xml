@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <spring.data.jpa.version>1.6.1.RELEASE</spring.data.jpa.version>
+        <spring.data.jpa.version>1.11.23.RELEASE</spring.data.jpa.version>
         <hibernate.validator.version>5.3.6.Final</hibernate.validator.version>
         <openjpa.version>2.3.0</openjpa.version>
         <hsqldb.version>2.3.2</hsqldb.version>
