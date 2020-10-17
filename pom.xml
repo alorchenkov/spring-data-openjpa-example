@@ -22,7 +22,6 @@
         <commons.lang.version>2.6</commons.lang.version>
         <commons.io.version>2.4</commons.io.version>
         <guava.version>16.0.1</guava.version>
-
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
