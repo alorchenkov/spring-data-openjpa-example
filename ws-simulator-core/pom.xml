@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <parent.basedir>${basedir}/..</parent.basedir>
         <hsqldb.version>2.2.9</hsqldb.version>
-        <xstream.version>1.4.10-java7</xstream.version>
+        <xstream.version>1.4.13-java7</xstream.version>
         <jetty.maven.plugin.version>8.1.13.v20130916</jetty.maven.plugin.version>
     </properties>
 
