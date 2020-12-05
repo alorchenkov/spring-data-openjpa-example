@@ -25,6 +25,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <log4j.version>1.2.17</log4j.version>
+             
+        <sonar.projectKey>alorchenkov_spring-data-openjpa-example</sonar.projectKey>
+        <sonar.organization>alorchenkov</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>be288f87126eb600b790adb609db08c3f27b3fa3</sonar.login>
+        <sonar.coverage.jacoco.xmlReportPath>/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPath>
+        <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
     </properties>
 
     <modules>
